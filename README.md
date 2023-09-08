@@ -124,39 +124,39 @@ This is the same to say that we have 66.6% to win and 33.3% to lose using the st
 But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected... Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
 
 ```python
-    # Here I show only the method "go", the rest of the class above is the same 
-    def go(self):
-        participant = self.participant.copy()
-        prize = self.prize.copy()
-        if self.strategy == "Monty":
-            participant[randint(0, self.dqty)-1] = 1 
-            prize[randint(0, self.dqty-1)] = 1
-            while participant.count(0)-1:
-                for i in range(len(participant)):
-                    if participant[i] == 0 and participant[i] == prize[i]:
-                        participant[i] = 'x'
-                        pos_init = participant.index(1)
-                        pos_changed = participant.index(0)
-                        participant[pos_init] = 0
-                        participant[pos_changed] = 1
-                        break
+# Here I show only the method "go", the rest of the class above is the same 
+def go(self):
+    participant = self.participant.copy()
+    prize = self.prize.copy()
+    if self.strategy == "Monty":
+        participant[randint(0, self.dqty)-1] = 1 
+        prize[randint(0, self.dqty-1)] = 1
+        while participant.count(0)-1:
+            for i in range(len(participant)):
+                if participant[i] == 0 and participant[i] == prize[i]:
+                    participant[i] = 'x'
+                    pos_init = participant.index(1)
+                    pos_changed = participant.index(0)
+                    participant[pos_init] = 0
+                    participant[pos_changed] = 1
+                    break
 
-            if prize[participant.index(1)] == 1:
-                return True
-            elif prize[participant.index(1)] == 0:
-                return False
-        elif self.strategy == "Stay":
-            participant[randint(0, self.dqty)-1] = 1 
-            prize[randint(0, self.dqty-1)] = 1
-            pos_selected = participant.index(1)
-            if prize[pos_selected] == 1:
-                return True
-            elif prize[pos_selected] == 0:
-                return False
-        
-        elif self.strategy == "New strategy":
-            ### You can write the code of your strategy here
-            return None
+        if prize[participant.index(1)] == 1:
+            return True
+        elif prize[participant.index(1)] == 0:
+            return False
+    elif self.strategy == "Stay":
+        participant[randint(0, self.dqty)-1] = 1 
+        prize[randint(0, self.dqty-1)] = 1
+        pos_selected = participant.index(1)
+        if prize[pos_selected] == 1:
+            return True
+        elif prize[pos_selected] == 0:
+            return False
+    
+    elif self.strategy == "New strategy":
+        ### You can write the code of your strategy here
+        return None
 ```
 
 And then we will run all again.
