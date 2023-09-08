@@ -73,7 +73,7 @@ Then, I create a class to sotorage the results:
 
 Here I make the iteration of the contest N times using the two classes defined (The 3 of the definition in the Contest Class is the number of doors, I will talk below about this). Here the number of iterations are 10.000 but we can obtain same results with lower numbers:
 
-    ```python
+    ``` { #example .lang .foo .bar }
     contest = Contest(3)
     result = Result()
     
@@ -82,7 +82,7 @@ Here I make the iteration of the contest N times using the two classes defined (
     ```
 Now, lets plot the result data in two lines, for this I imported "pyplot":
 
-    ```python
+    ``` { #example .lang .foo .bar }
     from matplotlib import pyplot as plt
 
     plt.plot(result.wins,label='Win')
@@ -96,7 +96,7 @@ Now, lets plot the result data in two lines, for this I imported "pyplot":
 
 Here we can se that is an tendecy for both lines and the wins are always greather tan loses. Also it reach an stable proportion win/lose, for check this I used Pandas to create a DataFrame whit this two list and perform the operation win/lose:
 
-    ```python
+    ``` { #example .lang .foo .bar }
     import pandas as pd
 
     df = pd.DataFrame(list(zip(result.wins, result.looses)),
@@ -124,7 +124,16 @@ This is the same to say that we have 66.6% to win and 33.3% to lose using the st
 But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected... Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
 
     ```python
-        # Here I show only the method "go", the rest of the class above is the same 
+    class Contest:
+        def __init__(self,dqty):
+            self.dqty = dqty 
+            self.participant = []
+            self.prize = []
+            for i in range(dqty):
+                self.participant.append(0)
+                self.prize.append(0)
+
+        # The next function emulate the contest
         def go(self):
             participant = self.participant.copy()
             prize = self.prize.copy()
@@ -161,7 +170,7 @@ But wait, what if we want to know the result to stay in the fisrt decition and d
 
 And then we will run all again.
 
-    ```python
+    ``` { #example .lang .foo .bar }
     contest = Contest(3,"Stay")
     result = Result()
 
@@ -187,7 +196,7 @@ Using (2) and (3):
 
 Also we can check this making a graph of the wins and loses by iteration:
 
-    ```python
+    ``` { #example .lang .foo .bar }
     print('Hello, world')
     plt.plot(result.wins,label='Win')
     plt.plot(result.looses,label='Lose')
@@ -196,13 +205,3 @@ Also we can check this making a graph of the wins and loses by iteration:
     plt.show()
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
-
-``` { #example .lang .foo .bar }
-A linkable code block
-```
-
-``` { .lang #example style="color: #333; background: #f8f8f8;" }
-A code block with inline styles. Fancy!
-```
-
-
