@@ -206,6 +206,6 @@ Also we can check this making a graph of the wins and loses by iteration:
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
-    ``` { #example .lang .foo .bar }
-    No se que poner
-    ```
+``` { #example .lang .foo .bar }
+No se que poner
+```
