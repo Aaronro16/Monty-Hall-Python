@@ -3,8 +3,8 @@
 
 This is personal, to get familiar with GitHub, Classes, Pandas and plotting in Python using Jupyter Notebook. This provide a simple test of exploration of the [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem). This is the descption of the problem:
 
-        "Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice? 
-        (obteined in the page of the link)"
+*Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice?*
+**(obteined in the page of the link)**
 
 Here I will show you that if you are in this situation you have to switch the door if you can. This will be performed with code in Python that emulate the game. 
 
@@ -74,9 +74,10 @@ Then, I create a class to sotorage the results:
 Here I make the iteration of the contest N times using the two classes defined (The 3 of the definition in the Contest Class is the number of doors, I will talk below about this). Here the number of iterations are 10.000 but we can obtain same results with lower numbers:
 
     ```python
+    #
     contest = Contest(3)
     result = Result()
-
+    
     for i in range(10000):
         result.add(contest.go())
     ```
