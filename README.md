@@ -1,3 +1,7 @@
+import markdown
+from markdown.extensions.fenced_code import FencedCodeExtension
+text = """
+
 # Monty Hall  Problem in Python 
 #### (With Jupyter Notebook)
 
