@@ -15,34 +15,34 @@ Here I will show you that if you are in this situation you have to switch the do
 - The return of the function "go" is True (Win) or False (Lose)
 
 
-    ```python
-    from random import randint
+```python
+from random import randint
 
-    class Contest:
-        def __init__(self,dqty):
-            self.dqty = dqty 
-            self.participant = []
-            self.prize = []
-            for i in range(dqty):
-                self.participant.append(0)
-                self.prize.append(0)
+class Contest:
+    def __init__(self,dqty):
+        self.dqty = dqty 
+        self.participant = []
+        self.prize = []
+        for i in range(dqty):
+            self.participant.append(0)
+            self.prize.append(0)
 
-        # The next function emulate the contest
-        def go(self):
-            participant = self.participant.copy()
-            prize = self.prize.copy()
-            participant[randint(0, self.dqty)-1] = 1 
-            prize[randint(0, self.dqty-1)] = 1
-            for i in range(len(participant)):
-                if participant[i] == 0 and participant[i] == prize[i]:
-                    participant[i] = 'x'
-                    break
-            pos_changed = participant.index(0)
-            if prize[pos_changed] == 1:
-                return True
-            elif prize[pos_changed] == 0:
-                return False
-    ```
+    # The next function emulate the contest
+    def go(self):
+        participant = self.participant.copy()
+        prize = self.prize.copy()
+        participant[randint(0, self.dqty)-1] = 1 
+        prize[randint(0, self.dqty-1)] = 1
+        for i in range(len(participant)):
+            if participant[i] == 0 and participant[i] == prize[i]:
+                participant[i] = 'x'
+                break
+        pos_changed = participant.index(0)
+        if prize[pos_changed] == 1:
+            return True
+        elif prize[pos_changed] == 0:
+            return False
+```
 
 How it works? It's quite simple, and has 3 steps:
 
@@ -57,54 +57,54 @@ Then, I create a class to sotorage the results:
 - It has two lists, each list have zero as unic item inside
 - The function "add" use an input True or False (Win or Lose), this take the last position in the list and increase this value and append the new value in the list
 
-    ```python
-    class Result:
-        def __init__(self):
-            self.wins = [0]
-            self.looses = [0]
-        def add(self,value):
-            if value:
-                self.wins.append(self.wins[-1]+1)
-                self.looses.append(self.looses[-1])
-            else:
-                self.wins.append(self.wins[-1])
-                self.looses.append(self.looses[-1]+1)
-    ```
+```python
+class Result:
+    def __init__(self):
+        self.wins = [0]
+        self.looses = [0]
+    def add(self,value):
+        if value:
+            self.wins.append(self.wins[-1]+1)
+            self.looses.append(self.looses[-1])
+        else:
+            self.wins.append(self.wins[-1])
+            self.looses.append(self.looses[-1]+1)
+```
 
 Here I make the iteration of the contest N times using the two classes defined (The 3 of the definition in the Contest Class is the number of doors, I will talk below about this). Here the number of iterations are 10.000 but we can obtain same results with lower numbers:
 
-    ``` { #example .lang .foo .bar }
-    contest = Contest(3)
-    result = Result()
-    
-    for i in range(10000):
-        result.add(contest.go())
-    ```
+``` { #example .lang .foo .bar }
+contest = Contest(3)
+result = Result()
+
+for i in range(10000):
+    result.add(contest.go())
+```
 Now, lets plot the result data in two lines, for this I imported "pyplot":
 
-    ``` { #example .lang .foo .bar }
-    from matplotlib import pyplot as plt
+``` { #example .lang .foo .bar }
+from matplotlib import pyplot as plt
 
-    plt.plot(result.wins,label='Win')
-    plt.plot(result.looses,label='Lose')
-    plt.legend(loc='upper center', shadow=True, fontsize='x-large')
+plt.plot(result.wins,label='Win')
+plt.plot(result.looses,label='Lose')
+plt.legend(loc='upper center', shadow=True, fontsize='x-large')
 
-    plt.show() 
-    ```
+plt.show() 
+```
 
 ![wins and loses graph using Monty strategy](imgs/win_lose-monthy.png)
 
 Here we can se that is an tendecy for both lines and the wins are always greather tan loses. Also it reach an stable proportion win/lose, for check this I used Pandas to create a DataFrame whit this two list and perform the operation win/lose:
 
-    ``` { #example .lang .foo .bar }
-    import pandas as pd
+``` { #example .lang .foo .bar }
+import pandas as pd
 
-    df = pd.DataFrame(list(zip(result.wins, result.looses)),
-                columns =['wins', 'loses'])
+df = pd.DataFrame(list(zip(result.wins, result.looses)),
+            columns =['wins', 'loses'])
 
-    plt.plot(df['wins']/df['loses'] )
-    plt.show()
-    ```
+plt.plot(df['wins']/df['loses'] )
+plt.show()
+```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-monthy.png)
 
 This implies that:
@@ -123,66 +123,66 @@ This is the same to say that we have 66.6% to win and 33.3% to lose using the st
 
 But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected... Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
 
-    ```python
-    class Contest:
-        def __init__(self,dqty):
-            self.dqty = dqty 
-            self.participant = []
-            self.prize = []
-            for i in range(dqty):
-                self.participant.append(0)
-                self.prize.append(0)
+```python
+class Contest:
+    def __init__(self,dqty):
+        self.dqty = dqty 
+        self.participant = []
+        self.prize = []
+        for i in range(dqty):
+            self.participant.append(0)
+            self.prize.append(0)
 
-        # The next function emulate the contest
-        def go(self):
-            participant = self.participant.copy()
-            prize = self.prize.copy()
-            if self.strategy == "Monty":
-                participant[randint(0, self.dqty)-1] = 1 
-                prize[randint(0, self.dqty-1)] = 1
-                while participant.count(0)-1:
-                    for i in range(len(participant)):
-                        if participant[i] == 0 and participant[i] == prize[i]:
-                            participant[i] = 'x'
-                            pos_init = participant.index(1)
-                            pos_changed = participant.index(0)
-                            participant[pos_init] = 0
-                            participant[pos_changed] = 1
-                            break
+    # The next function emulate the contest
+    def go(self):
+        participant = self.participant.copy()
+        prize = self.prize.copy()
+        if self.strategy == "Monty":
+            participant[randint(0, self.dqty)-1] = 1 
+            prize[randint(0, self.dqty-1)] = 1
+            while participant.count(0)-1:
+                for i in range(len(participant)):
+                    if participant[i] == 0 and participant[i] == prize[i]:
+                        participant[i] = 'x'
+                        pos_init = participant.index(1)
+                        pos_changed = participant.index(0)
+                        participant[pos_init] = 0
+                        participant[pos_changed] = 1
+                        break
 
-                if prize[participant.index(1)] == 1:
-                    return True
-                elif prize[participant.index(1)] == 0:
-                    return False
-            elif self.strategy == "Stay":
-                participant[randint(0, self.dqty)-1] = 1 
-                prize[randint(0, self.dqty-1)] = 1
-                pos_selected = participant.index(1)
-                if prize[pos_selected] == 1:
-                    return True
-                elif prize[pos_selected] == 0:
-                    return False
-            
-            elif self.strategy == "New strategy":
-                ### You can write the code of your strategy here
-                return None
-    ```
+            if prize[participant.index(1)] == 1:
+                return True
+            elif prize[participant.index(1)] == 0:
+                return False
+        elif self.strategy == "Stay":
+            participant[randint(0, self.dqty)-1] = 1 
+            prize[randint(0, self.dqty-1)] = 1
+            pos_selected = participant.index(1)
+            if prize[pos_selected] == 1:
+                return True
+            elif prize[pos_selected] == 0:
+                return False
+        
+        elif self.strategy == "New strategy":
+            ### You can write the code of your strategy here
+            return None
+```
 
 And then we will run all again.
 
-    ``` { #example .lang .foo .bar }
-    contest = Contest(3,"Stay")
-    result = Result()
+``` { #example .lang .foo .bar }
+contest = Contest(3,"Stay")
+result = Result()
 
-    for i in range(10000):
-        result.add(contest.go())
+for i in range(10000):
+    result.add(contest.go())
 
-    df = pd.DataFrame(list(zip(result.wins, result.looses)),
-                columns =['wins', 'loses'])
+df = pd.DataFrame(list(zip(result.wins, result.looses)),
+            columns =['wins', 'loses'])
 
-    plt.plot(df['wins']/df['loses'] )
-    plt.show()
-    ```
+plt.plot(df['wins']/df['loses'] )
+plt.show()
+```
 
 ![wins and loses graph using staying strategy](imgs/win_lose-stay.png)
 
@@ -196,16 +196,13 @@ Using (2) and (3):
 
 Also we can check this making a graph of the wins and loses by iteration:
 
-    ``` { #example .lang .foo .bar }
-    print('Hello, world')
-    plt.plot(result.wins,label='Win')
-    plt.plot(result.looses,label='Lose')
-    plt.legend(loc='upper center', shadow=True, fontsize='x-large')
+```python
+print('Hello, world')
+plt.plot(result.wins,label='Win')
+plt.plot(result.looses,label='Lose')
+plt.legend(loc='upper center', shadow=True, fontsize='x-large')
 
-    plt.show()
+plt.show()
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
-``` { #example .lang .foo .bar }
-No se que poner
-```
