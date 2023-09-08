@@ -73,7 +73,7 @@ Then, I create a class to sotorage the results:
 
 Here I make the iteration of the contest N times using the two classes defined (The 3 of the definition in the Contest Class is the number of doors, I will talk below about this). Here the number of iterations are 10.000 but we can obtain same results with lower numbers:
 
-    ```Python
+    ```python
     contest = Contest(3)
     result = Result()
     
@@ -187,7 +187,7 @@ Using (2) and (3):
 
 Also we can check this making a graph of the wins and loses by iteration:
 
-    ``` {.python}
+    ```python
     plt.plot(result.wins,label='Win')
     plt.plot(result.looses,label='Lose')
     plt.legend(loc='upper center', shadow=True, fontsize='x-large')
@@ -195,5 +195,3 @@ Also we can check this making a graph of the wins and loses by iteration:
     plt.show()
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
-
-
