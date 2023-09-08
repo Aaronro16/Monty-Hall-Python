@@ -194,6 +194,7 @@ plt.plot(result.looses,label='Lose')
 plt.legend(loc='upper center', shadow=True, fontsize='x-large')
 
 plt.show()
-    ```
+```
+
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
