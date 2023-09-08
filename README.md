@@ -187,7 +187,7 @@ Using (2) and (3):
 
 Also we can check this making a graph of the wins and loses by iteration:
 
-    ``` code
+    ```code
     plt.plot(result.wins,label='Win')
     plt.plot(result.looses,label='Lose')
     plt.legend(loc='upper center', shadow=True, fontsize='x-large')
