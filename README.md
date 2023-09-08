@@ -197,5 +197,15 @@ Also we can check this making a graph of the wins and loses by iteration:
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
+``` { #example .lang .foo .bar }
+A linkable code block
+```
 
+``` { .lang #example style="color: #333; background: #f8f8f8;" }
+A code block with inline styles. Fancy!
+```
+
+``` { .lang linenos=true linenostart=42 hl_lines="43-44 50" title="An Example Code Block" }`
+A truncated code block...
+```
 
