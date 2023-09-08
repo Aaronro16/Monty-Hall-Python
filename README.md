@@ -82,7 +82,7 @@ for i in range(10000):
 ```
 Now, lets plot the result data in two lines, for this I imported "pyplot":
 
-``` { #example .lang .foo .bar }
+```python
 from matplotlib import pyplot as plt
 
 plt.plot(result.wins,label='Win')
@@ -96,7 +96,7 @@ plt.show()
 
 Here we can se that is an tendecy for both lines and the wins are always greather tan loses. Also it reach an stable proportion win/lose, for check this I used Pandas to create a DataFrame whit this two list and perform the operation win/lose:
 
-``` { #example .lang .foo .bar }
+```python
 import pandas as pd
 
 df = pd.DataFrame(list(zip(result.wins, result.looses)),
@@ -124,16 +124,7 @@ This is the same to say that we have 66.6% to win and 33.3% to lose using the st
 But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected... Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
 
 ```python
-class Contest:
-    def __init__(self,dqty):
-        self.dqty = dqty 
-        self.participant = []
-        self.prize = []
-        for i in range(dqty):
-            self.participant.append(0)
-            self.prize.append(0)
-
-    # The next function emulate the contest
+    # Here I show only the method "go", the rest of the class above is the same 
     def go(self):
         participant = self.participant.copy()
         prize = self.prize.copy()
@@ -170,7 +161,7 @@ class Contest:
 
 And then we will run all again.
 
-``` { #example .lang .foo .bar }
+```python
 contest = Contest(3,"Stay")
 result = Result()
 
