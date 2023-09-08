@@ -8,7 +8,7 @@ This is personal, to get familiar with GitHub, Classes, Pandas and plotting in P
 
 Here I will show you that if you are in this situation you have to switch the door if you can. This will be performed with code in Python that emulate the game. 
 
-** First lets create the class contest wich will have:
+**First lets create the class contest wich will have:
 - The election door of the participant modelate as a list
 - The location of the prize behind the doors as a list
 - The function "go" that will run the contest according the strategy of input
