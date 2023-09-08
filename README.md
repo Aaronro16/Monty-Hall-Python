@@ -193,15 +193,9 @@ Also we can check this making a graph of the wins and loses by iteration:
     plt.legend(loc='upper center', shadow=True, fontsize='x-large')
 
     plt.show()
+    print('Hello, world')
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
 
-import markdown
-from markdown.extensions.fenced_code import FencedCodeExtension
-text = """
-```python
-print('Hello, world')
-```
-"""
-markdown.markdown(text, extensions=[FencedCodeExtension()])
+
