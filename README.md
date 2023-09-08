@@ -198,3 +198,4 @@ plt.show()
 
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
 
+As you see the result are opposite in each case and the best strategy is change the door if you can. 
