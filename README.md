@@ -1,7 +1,3 @@
-import markdown
-from markdown.extensions.fenced_code import FencedCodeExtension
-text = """
-
 # Monty Hall  Problem in Python 
 #### (With Jupyter Notebook)
 
@@ -199,3 +195,13 @@ Also we can check this making a graph of the wins and loses by iteration:
     plt.show()
     ```
 ![wins/loses (ratio) graph using Monty strategy](imgs/win_lose-ratio-stay.png)
+
+
+import markdown
+from markdown.extensions.fenced_code import FencedCodeExtension
+text = """
+```python
+print('Hello, world')
+```
+"""
+markdown.markdown(text, extensions=[FencedCodeExtension()])
