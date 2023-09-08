@@ -73,8 +73,7 @@ Then, I create a class to sotorage the results:
 
 Here I make the iteration of the contest N times using the two classes defined (The 3 of the definition in the Contest Class is the number of doors, I will talk below about this). Here the number of iterations are 10.000 but we can obtain same results with lower numbers:
 
-    ```python
-    #
+    ```Python
     contest = Contest(3)
     result = Result()
     
