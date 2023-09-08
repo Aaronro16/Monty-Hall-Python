@@ -205,7 +205,4 @@ A linkable code block
 A code block with inline styles. Fancy!
 ```
 
-``` { .lang linenos=true linenostart=42 hl_lines="43-44 50" title="An Example Code Block" }`
-A truncated code block...
-```
 
