@@ -55,7 +55,7 @@ class Result:
         
 
 
-concurso = Contest(5,"None")
+concurso = Contest(3,"Monty")
 Resultado = Result()
 
 for i in range(20000):
