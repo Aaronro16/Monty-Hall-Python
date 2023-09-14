@@ -121,7 +121,7 @@ Using (1) and (2), we have:
 
 This is the same to say that we have 66.6% to win and 33.3% to lose using the strategy to change our selection after the host open the empty door.
 
-But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected... Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
+But wait, what if we want to know the result to stay in the fisrt decition and don't change the door selected...?? Well, in the next block of code I changed the Class Contest to receive the strategy that I want to test. If you want to test a new strategy you can write the code to do that.
 
 ```python
 # Here I show only the method "go", the rest of the class above is the same 
