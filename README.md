@@ -54,7 +54,7 @@ How it works? It's quite simple, and has 3 steps:
 
 Then, I create a class to sotorage the results:
 
-- It has two lists, each list have zero as unic item inside
+- It has two lists, each list have zero as unique item inside
 - The function "add" use an input True or False (Win or Lose), this take the last position in the list and increase this value and append the new value in the list
 
 ```python
